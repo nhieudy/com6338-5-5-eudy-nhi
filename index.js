@@ -8,15 +8,28 @@
 //5. When clicked on again, delete the item
 //Note: to add a new HTML DOM, create the node, and then append it
 var form = document.querySelector("form"); //selecting form
+var input = document.querySelector("input");
 var ul = document.querySelector("#todo-list"); //selecting the ul #todo-list
 //On submission
 form.onsubmit = function(e){
 e.preventDefault();
 var toDo = document.querySelector("input").value; //selecting the input's value
+//If no value OR only spaces, do not do anything
+toDo = toDo.trim(); //Removes white spaces from both side of string
+if(toDo === ""){
+    return;
+}
+
 var li = document.createElement("li"); //create li element
 var todoBtn = document.createElement("button"); //create button element
 var todoText = document.createTextNode(toDo); //create text node to append to button
 todoBtn.appendChild(todoText);//appends text to button
 li.appendChild(todoBtn); //appends button to li
 ul.appendChild(li); //appends li to ul
+form.reset();
+}
+
+var button = document.querySelectorAll("button")
+button.onclick = function(e){
+button.style.textDecoration = "line-through";
 }
