@@ -29,15 +29,30 @@ li.appendChild(todoBtn); //appends button to li
 ul.appendChild(li); //appends li to ul
 form.reset();
 
-var todoList = document.querySelectorAll(".todo-item"); //selector all returns everything with class
+var todoList = document.querySelectorAll(".todo-item"); //selector all returns everything with class in a node class
+
+
+//Something is wrong here. My for loop may be wrong.
 for (var i = 0; i <todoList.length; i++){ //Need to do this, since its not just one
     todoList[i].addEventListener("click", function(e){
-       console.log("test");
-       e.target.style.textDecoration = "line-through";
-       e.target.setAttribute('class', 'todo-finished');
-       
+        var check = e.target.classList.contains("todo-item")
+        if(check){ //classList returns the CSS Classnames of an element
+        console.log("finished"); 
+       //"target reference to the object which the event was dispatched"
+        e.target.style.textDecoration = "line-through";
+        todoBtn.setAttribute('class', 'todo-done'); 
+        
+        }
+        else{
+            console.log("remove")
+            //console.log(e.target.parentElement);
+           // e.target.parentElement.remove();
+        }
+ 
         })
 }
 }
+
+
 
 
